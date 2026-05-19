@@ -56,8 +56,17 @@ export default function PremiumCategoriesSection() {
     const [startIndex, setStartIndex] = useState(0);
     const total = CATEGORIES.length;
 
-    const prev = () => setStartIndex((i) => (i - 1 + total) % total);
-    const next = () => setStartIndex((i) => (i + 1) % total);
+    const prev = () => {
+        setStartIndex((prev) =>
+            prev === 0 ? total - 1 : prev - 1
+        );
+    };
+
+    const next = () => {
+        setStartIndex((prev) =>
+            prev === total - 1 ? 0 : prev + 1
+        );
+    };
 
     const visibleItems = Array.from(
         { length: Math.min(VISIBLE, total) },
@@ -84,13 +93,24 @@ export default function PremiumCategoriesSection() {
                     </div>
                 </div>
 
-                {/* CARDS GRID */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                    {visibleItems.map((cat) => (
-                        <CategoryCard key={`${cat.id}-${startIndex}`} category={cat} />
-                    ))}
+                {/* SLIDER GRID */}
+                <div className="overflow-hidden relative">
+                    <div
+                        className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                        style={{
+                            transform: `translateX(-${startIndex * 25}%)`,
+                        }}
+                    >
+                        {[...CATEGORIES, ...CATEGORIES.slice(0, VISIBLE)].map((cat, index) => (
+                            <div
+                                key={`${cat.id}-${index}`}
+                                className="w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 px-2.5"
+                            >
+                                <CategoryCard category={cat} />
+                            </div>
+                        ))}
+                    </div>
                 </div>
-
                 {/* DOT INDICATORS */}
                 <div className="flex justify-center gap-2 mt-9">
                     {CATEGORIES.map((_, i) => (
@@ -98,11 +118,10 @@ export default function PremiumCategoriesSection() {
                             key={i}
                             onClick={() => setStartIndex(i)}
                             aria-label={`Go to slide ${i + 1}`}
-                            className={`h-2 rounded-full border-none cursor-pointer transition-all duration-300 ${
-                                i === startIndex
-                                    ? "w-6 bg-[#FF6B00]"
-                                    : "w-2 bg-white/25"
-                            }`}
+                            className={`h-2 rounded-full border-none cursor-pointer transition-all duration-300 ${i === startIndex
+                                ? "w-6 bg-[#FF6B00]"
+                                : "w-2 bg-white/25"
+                                }`}
                         />
                     ))}
                 </div>
