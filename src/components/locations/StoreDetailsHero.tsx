@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Phone } from "lucide-react";
 
 export interface StoreDetail {
     id: number;
@@ -89,7 +90,7 @@ export default function StoreDetailsHero({ store }: StoreDetailsHeroProps) {
                             strokeWidth="2.2"
                             strokeLinecap="round"
                             strokeLinejoin="round">
-                            <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+                            <polygon points="3 11 22 2 13 21 11 13 3 11" />
                         </svg>
 
                         Get Directions
@@ -98,16 +99,24 @@ export default function StoreDetailsHero({ store }: StoreDetailsHeroProps) {
 
                     <a
                         href={`tel:${store.phone}`}
-                        className="inline-flex items-center gap-2.5 bg-white/10 border border-white/20 text-white font-bold px-8 py-5 rounded-full backdrop-blur-sm hover:bg-white/20 transition"
+                        className="
+                                    inline-flex
+                                    items-center
+                                    justify-center
+                                    gap-2.5
+                                    bg-white
+                                    text-black
+                                    font-bold
+                                    px-8
+                                    py-5
+                                    rounded-lg
+                                    border
+                                    border-black/10
+                                    hover:bg-gray-100
+                                    transition
+                                "
                     >
-                        <svg width="18" height="18" viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2.2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.19 18.85A19.5 19.5 0 0 1 4.69 12A19.79 19.79 0 0 1 1.63 3.37A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72"/>
-                        </svg>
+                        <Phone size={18} strokeWidth={2.2} />
 
                         Call Store
                     </a>

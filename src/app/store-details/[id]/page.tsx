@@ -1,5 +1,7 @@
 import StoreDetailsHero from "@/components/locations/StoreDetailsHero";
 import { DEMO_STORE_LOCATIONS } from "@/components/lib/demo-store-locations";
+import CommunityFeedbackSection from "@/components/home/CommunityFeedbackSection";
+import VisitStore from "@/components/locations/VisitStore";
 
 interface PageProps {
     params: Promise<{ id: string }>;
@@ -32,8 +34,10 @@ export default async function StoreDetailsPage({ params }: PageProps) {
     };
 
     return (
-        <main className="min-h-screen bg-[#120400]">
+        <main className="bg-[#120400]">
             <StoreDetailsHero store={store} />
+            <CommunityFeedbackSection />
+            <VisitStore/>
         </main>
     );
 }
