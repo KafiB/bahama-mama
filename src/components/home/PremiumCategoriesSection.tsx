@@ -68,10 +68,6 @@ export default function PremiumCategoriesSection() {
         );
     };
 
-    const visibleItems = Array.from(
-        { length: Math.min(VISIBLE, total) },
-        (_, i) => CATEGORIES[(startIndex + i) % total]
-    );
 
     return (
         <section className="bg-gradient-to-b from-[#1a0800] to-[#1f0d03] py-16 md:py-20 overflow-hidden">

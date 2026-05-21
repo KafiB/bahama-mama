@@ -16,6 +16,8 @@ export interface StoreDetail {
     opensAt: string;
     heroImage: string;
     directionsUrl: string;
+    lat?: number;
+    lng?: number;
 }
 
 interface StoreDetailsHeroProps {

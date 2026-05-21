@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -55,11 +54,8 @@ interface FounderSectionProps {
 }
 
 export default function FounderSection({ founders = DEMO_FOUNDERS }: FounderSectionProps) {
-  const [current, setCurrent] = useState(0);
-
-  const prev = () => setCurrent((i) => (i === 0 ? founders.length - 1 : i - 1));
-  const next = () => setCurrent((i) => (i === founders.length - 1 ? 0 : i + 1));
-
+const current = 0;
+  
   const f = founders[current];
 
   return (
@@ -215,7 +211,6 @@ export default function FounderSection({ founders = DEMO_FOUNDERS }: FounderSect
                 </a>
               </div>
 
-              {/* Pagination */}
               
             </div>
           </div>

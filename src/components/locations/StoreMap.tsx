@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import { DEMO_STORE_LOCATIONS, StoreLocation, StoreTag } from "../lib/demo-store-locations";
 import Link from "next/link";
+import Image from "next/image";
+
 
 // ─── Dynamically import map to avoid SSR issues ───────────────────────────────
 const MapSection = dynamic(() => import("./MapInner"), { ssr: false });
@@ -43,11 +45,11 @@ function FilterBtn({
                     />
                 );
             case "CBD":
-                return <img src="/locations/map/cbd.png" alt="CBD" className="w-4 h-4" />;
+                return <Image src="/locations/map/cbd.png" alt="CBD" className="w-4 h-4" width={16} height={16} />;
             case "Vape":
-                return <img src="/locations/map/vape.png" alt="Vape" className="w-4 h-4" />;
+                return <Image src="/locations/map/vape.png" alt="Vape" className="w-4 h-4" width={16} height={16} />;
             case "Pet Friendly":
-                return <img src="/locations/map/pet.png" alt="Pet" className="w-4 h-4" />;
+                return <Image src="/locations/map/pet.png" alt="Pet" className="w-4 h-4" width={16} height={16} />;
             default:
                 return null;
         }
@@ -128,10 +130,12 @@ function StoreCard({
                 </span>
                 {store.tags.map((tag: StoreTag) => (
                     <span key={tag} className="flex items-center gap-1.5 text-white/50 text-[12px]">
-                        <img
+                        <Image
                             src={TAG_ICONS[tag]}
                             alt={tag}
                             className="w-4 h-4 object-contain flex-shrink-0"
+                            width={16}
+                            height={16}
                         />
                         {tag}
                     </span>

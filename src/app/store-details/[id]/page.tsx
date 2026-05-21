@@ -2,6 +2,9 @@ import StoreDetailsHero from "@/components/locations/StoreDetailsHero";
 import { DEMO_STORE_LOCATIONS } from "@/components/lib/demo-store-locations";
 import CommunityFeedbackSection from "@/components/home/CommunityFeedbackSection";
 import VisitStore from "@/components/locations/VisitStore";
+import StoreInfoSection from "@/components/locations/StoreInfoSection";
+import StoreGallery from "@/components/locations/StoreGallery";
+import ServicesAvailableSection from "@/components/locations/ServiceAvailableSection";
 
 interface PageProps {
     params: Promise<{ id: string }>;
@@ -27,17 +30,19 @@ export default async function StoreDetailsPage({ params }: PageProps) {
         closesAt: raw.closesAt,
         opensAt: "9:00 AM",
         heroImage: "/locations/map/details/Hero Section.png",
-        directionsUrl:
-            "lat" in raw && "lng" in raw
-                ? `https://maps.google.com/?q=${(raw as any).lat},${(raw as any).lng}`
-                : "https://maps.google.com",
+        directionsUrl: `https://maps.google.com/?q=${raw.lat},${raw.lng}`,
+        lat: raw.lat,
+        lng: raw.lng,
     };
 
     return (
         <main className="bg-[#120400]">
             <StoreDetailsHero store={store} />
+            <StoreInfoSection store={store} />
+            <StoreGallery />
+            <ServicesAvailableSection />
             <CommunityFeedbackSection />
-            <VisitStore/>
+            <VisitStore />
         </main>
     );
 }
