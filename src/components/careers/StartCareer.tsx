@@ -46,8 +46,8 @@ export default function ExploreCollectionBanner() {
                         max-w-[1000px]
                     "
                 >
-                    Visit a Bahama Mama Store
-                </h2>
+                    Start Your Career With Bahama               
+                     </h2>
 
                 {/* Subtitle */}
                 <p
@@ -63,8 +63,8 @@ export default function ExploreCollectionBanner() {
                         opacity-95
                     "
                 >
-                    Experience the full range of our 3,500+ premium products in person.
-                    Our experts are ready to guide you to the perfect selection.
+                    Explore opportunities across 90+ locations in Texas.
+                    We’re ready for you.
                 </p>
 
             </div>

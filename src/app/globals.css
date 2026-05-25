@@ -69,3 +69,41 @@ body {
 .leaflet-control {
   z-index: 1 !important;
 }
+
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Store locator list — dark track, orange square thumb */
+.store-list-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #ff6b00 rgba(255, 255, 255, 0.06);
+}
+
+.store-list-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.store-list-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.store-list-scrollbar::-webkit-scrollbar-thumb {
+  background: #ff6b00;
+  border: 2px solid rgba(30, 9, 0, 0.9);
+  border-radius: 0;
+}
+
+.store-list-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #ff8533;
+}
+
+.store-list-scrollbar::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}

@@ -1,6 +1,6 @@
 "use client";
 
-export default function ExploreCollectionBanner() {
+export default function StayConnected() {
     return (
         <section
             className="
@@ -46,7 +46,7 @@ export default function ExploreCollectionBanner() {
                         max-w-[1000px]
                     "
                 >
-                    Visit a Bahama Mama Store
+                    STAY CONNECTED WITH BAHAMA MAMA
                 </h2>
 
                 {/* Subtitle */}
@@ -63,8 +63,8 @@ export default function ExploreCollectionBanner() {
                         opacity-95
                     "
                 >
-                    Experience the full range of our 3,500+ premium products in person.
-                    Our experts are ready to guide you to the perfect selection.
+                    Follow our latest updates, product launches, and store
+                    announcements across Texas.
                 </p>
 
             </div>

@@ -9,25 +9,49 @@ export default function Footer() {
     const [search, setSearch] = useState("");
 
     return (
-        <footer className="w-full bg-gradient-to-br from-[#191317] to-[#5D231F]">
+        <footer className="w-full bg-gradient-to-br from-[#1a0800] to-[#1f0d03]">
 
             {/* ── MAIN CONTENT ── */}
-            <div className="max-w-[1400px] mx-auto px-5 md:px-14 py-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-16">
-
+            <div
+                className="
+        max-w-[1400px]
+        mx-auto
+        px-4
+        sm:px-6
+        md:px-10
+        lg:px-14
+        py-14
+        sm:py-16
+        grid
+        grid-cols-1
+        md:grid-cols-2
+        xl:grid-cols-3
+        gap-10
+        md:gap-8
+        lg:gap-12
+        xl:gap-16
+    "
+            >
                 {/* ── COL 1: Logo + tagline + icons ── */}
-                <div className="flex flex-col gap-5">
-                    <Link href="/home">
-                        <Image
-                            src="/footer/logo.svg"
-                            alt="Bahama Mama"
-                            width={180}
-                            height={48}
-                            className="h-12 w-auto object-contain"
-                        />
-                    </Link>
+                <div className="flex flex-col gap-5 items-center md:items-start text-center md:text-left">                    <Link href="/home">
+                    <Image
+                        src="/footer/logo.svg"
+                        alt="Bahama Mama"
+                        width={180}
+                        height={48}
+                        className="h-12 w-auto object-contain"
+                    />
+                </Link>
 
-                    <p className="text-white/55 text-[13px] leading-[1.75] max-w-[260px]">
-                        Leading the way in corporate service infrastructure for over three
+                    <p
+                        className="
+        text-white/55
+        text-[13px]
+        sm:text-[14px]
+        leading-[1.8]
+        max-w-[320px]
+    "
+                    >                        Leading the way in corporate service infrastructure for over three
                         decades. Excellence in every location, precision in every project.
                     </p>
 
@@ -54,7 +78,19 @@ export default function Footer() {
                     </div>
 
                     {/* Search input */}
-                    <div className="flex items-center gap-2.5 bg-[rgba(255,255,255,0.08)] border border-white/10 rounded-lg px-4 h-[48px] mt-1">
+                    <div className="
+    flex
+    items-center
+    gap-2.5
+    bg-[rgba(255,255,255,0.08)]
+    border
+    border-white/10
+    rounded-xl
+    px-4
+    h-[52px]
+    mt-1
+    w-full
+">
                         <input
                             type="text"
                             placeholder="Search hubs..."
@@ -87,18 +123,47 @@ export default function Footer() {
                     </div>
 
                     {/* Email input */}
-                    <div className="flex items-center bg-[rgba(255,255,255,0.08)] border border-white/10 rounded-lg px-4 h-[48px] mt-1">
+                    <div className="flex items-center bg-[rgba(255,255,255,0.08)] border border-white/10 rounded-xl px-4 h-[52px] mt-1 w-full">
                         <input
                             type="email"
                             placeholder="Email Address"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="flex-1 bg-transparent border-none outline-none text-[13px] text-white/80 placeholder:text-white/35 caret-[#FF6B00]"
+                            className="
+    flex-1
+    bg-transparent
+    border-none
+    outline-none
+    text-[14px]
+    sm:text-[15px]
+    text-white/80
+    placeholder:text-white/35
+    caret-[#FF6B00]
+    min-w-0
+"
                         />
                     </div>
 
                     {/* Subscribe button */}
-                    <button className="w-full h-[48px] rounded-lg bg-gradient-to-r from-[#FF4C03] to-[#FF960B] text-white text-[14px] font-bold tracking-[0.5px] border-none cursor-pointer hover:opacity-90 transition-opacity duration-200">
+                    <button className="
+    w-full
+    h-[52px]
+    rounded-xl
+    bg-gradient-to-r
+    from-[#FF4C03]
+    to-[#FF960B]
+    text-white
+    text-[14px]
+    sm:text-[15px]
+    font-bold
+    tracking-[0.5px]
+    border-none
+    cursor-pointer
+    hover:opacity-90
+    transition-all
+    duration-300
+    hover:scale-[1.01]
+">
                         Subscribe
                     </button>
                 </div>
@@ -110,21 +175,44 @@ export default function Footer() {
             </div>
 
             {/* ── BOTTOM BAR ── */}
-            <div className="max-w-[1400px] mx-auto px-5 md:px-14 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <p className="text-white/40 text-[12px]">
+            <div
+                className="
+        max-w-[1400px]
+        mx-auto
+        px-4
+        sm:px-6
+        md:px-10
+        lg:px-14
+        py-5
+        flex
+        flex-col
+        md:flex-row
+        items-center
+        justify-between
+        gap-4
+    "
+            >                <p className="text-white/40 text-[12px]">
                     © 2024 Bahama Mama Corporate. All rights reserved.
                 </p>
 
-                <div className="flex items-center gap-6">
-                    {["Accessibility", "Compliance", "Cookie Settings"].map((item) => (
-                        <Link
-                            key={item}
-                            href="/"
-                            className="text-white/40 text-[12px] no-underline hover:text-white/70 transition-colors duration-200"
-                        >
-                            {item}
-                        </Link>
-                    ))}
+                <div
+                    className="
+        flex
+        flex-wrap
+        items-center
+        justify-center
+        gap-x-6
+        gap-y-2
+    "
+                >                    {["Accessibility", "Compliance", "Cookie Settings"].map((item) => (
+                    <Link
+                        key={item}
+                        href="/"
+                        className="text-white/40 text-[12px] no-underline hover:text-white/70 transition-colors duration-200"
+                    >
+                        {item}
+                    </Link>
+                ))}
                 </div>
             </div>
         </footer>
@@ -138,8 +226,22 @@ function IconBtn({ href, label, icon }: { href: string; label: string; icon: str
         <Link
             href={href}
             aria-label={label}
-            className="w-[38px] h-[38px] rounded-full bg-white/10 border border-white/15 flex items-center justify-center hover:bg-white/20 hover:border-[#FF6B00]/50 transition-all duration-200"
-        >
+           className="
+    w-[42px]
+    h-[42px]
+    rounded-full
+    bg-white/10
+    border
+    border-white/15
+    flex
+    items-center
+    justify-center
+    hover:bg-white/20
+    hover:border-[#FF6B00]/50
+    transition-all
+    duration-300
+    hover:scale-105
+">
             <Image
                 src={icon}
                 alt={label}

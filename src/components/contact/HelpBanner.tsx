@@ -46,7 +46,7 @@ export default function ExploreCollectionBanner() {
                         max-w-[1000px]
                     "
                 >
-                    Visit a Bahama Mama Store
+                    WE'RE HERE TO HELP 
                 </h2>
 
                 {/* Subtitle */}
@@ -63,8 +63,8 @@ export default function ExploreCollectionBanner() {
                         opacity-95
                     "
                 >
-                    Experience the full range of our 3,500+ premium products in person.
-                    Our experts are ready to guide you to the perfect selection.
+                    Have questions about our products or locations?
+                    Our team is ready to assist you.
                 </p>
 
             </div>

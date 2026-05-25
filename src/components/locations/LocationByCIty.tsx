@@ -24,7 +24,7 @@ const DEFAULT_CITIES: CityLocationData[] = [
 
 export default function LocationsByCity({ cities = DEFAULT_CITIES }: LocationsByCityProps) {
     return (
-        <section className="w-full py-12 bg-gradient-to-b from-[#161114] to-[#5D231F]">
+        <section className="w-full py-12 bg-gradient-to-br from-[#1a0800] to-[#1f0d03]">
             <div className="max-w-[1400px] mx-auto px-5 md:px-14">
                 
                 {/* Section Title with Left Orange Indicator Line */}

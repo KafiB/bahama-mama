@@ -215,7 +215,7 @@ export default function FlagshipExperiencesSection({
     const featuredOffset = Math.floor(visible / 2);
 
     return (
-        <section className="py-16 md:py-20 w-full bg-gradient-to-b from-[#191317] to-[#5D231F] overflow-hidden">
+        <section className="py-16 md:py-20 w-full bg-gradient-to-br from-[#1a0800] to-[#1f0d03] overflow-hidden">
             <div className="max-w-[1400px] mx-auto px-5 md:px-14">
 
                 {/* ── Header ── */}

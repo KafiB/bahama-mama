@@ -69,22 +69,71 @@ export default function PremiumCategoriesSection() {
     };
 
 
+    const getTranslateValue = () => {
+        if (typeof window !== "undefined") {
+            if (window.innerWidth >= 1280) return 25;
+            if (window.innerWidth >= 1024) return 33.333;
+            if (window.innerWidth >= 640) return 50;
+        }
+
+        return 100;
+    };
+
     return (
-        <section className="bg-gradient-to-b from-[#1a0800] to-[#1f0d03] py-16 md:py-20 overflow-hidden">
-            <div className="max-w-[1400px] mx-auto px-5 md:px-14">
+        <section
+            className="
+        bg-gradient-to-b
+        from-[#1a0800]
+        to-[#1f0d03]
+        py-14
+        sm:py-16
+        md:py-20
+        overflow-hidden
+    "
+        >
+            <div
+                className="
+        max-w-[1400px]
+        mx-auto
+        px-4
+        sm:px-6
+        md:px-10
+        lg:px-14
+    "
+            >
 
                 {/* HEADER ROW */}
-                <div className="flex items-start justify-between mb-10">
-                    <div>
-                        <h2 className="text-[clamp(20px,2.2vw,30px)] font-extrabold text-white uppercase tracking-[2px] leading-none">
-                            Premium Categories
+                <div
+                    className="
+        flex
+        flex-col
+        sm:flex-row
+        sm:items-center
+        justify-between
+        gap-6
+        mb-8
+        sm:mb-10
+    "
+                >                    <div>
+                        <h2
+                            className="
+        text-[24px]
+        sm:text-[28px]
+        lg:text-[32px]
+        font-extrabold
+        text-white
+        uppercase
+        tracking-[1.5px]
+        sm:tracking-[2px]
+        leading-none
+    "
+                        >                            Premium Categories
                         </h2>
                         <div className="w-14 h-[3px] bg-[#FF6B00] mt-2.5 rounded-sm" />
                     </div>
 
                     {/* Arrows */}
-                    <div className="flex gap-2.5">
-                        <ArrowButton direction="left" onClick={prev} />
+                    <div className="flex gap-2 sm:gap-3 self-start sm:self-auto">                        <ArrowButton direction="left" onClick={prev} />
                         <ArrowButton direction="right" onClick={next} />
                     </div>
                 </div>
@@ -94,32 +143,38 @@ export default function PremiumCategoriesSection() {
                     <div
                         className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                         style={{
-                            transform: `translateX(-${startIndex * 25}%)`,
+                            transform: `translateX(-${startIndex * getTranslateValue()}%)`,
                         }}
                     >
                         {[...CATEGORIES, ...CATEGORIES.slice(0, VISIBLE)].map((cat, index) => (
                             <div
                                 key={`${cat.id}-${index}`}
-                                className="w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 px-2.5"
-                            >
+                                className="
+    w-full
+    sm:w-1/2
+    lg:w-1/3
+    xl:w-1/4
+    flex-shrink-0
+    px-2
+    sm:px-2.5
+"                            >
                                 <CategoryCard category={cat} />
                             </div>
                         ))}
                     </div>
                 </div>
                 {/* DOT INDICATORS */}
-                <div className="flex justify-center gap-2 mt-9">
-                    {CATEGORIES.map((_, i) => (
-                        <button
-                            key={i}
-                            onClick={() => setStartIndex(i)}
-                            aria-label={`Go to slide ${i + 1}`}
-                            className={`h-2 rounded-full border-none cursor-pointer transition-all duration-300 ${i === startIndex
-                                ? "w-6 bg-[#FF6B00]"
-                                : "w-2 bg-white/25"
-                                }`}
-                        />
-                    ))}
+                <div className="flex justify-center gap-2 mt-7 sm:mt-9 flex-wrap">                    {CATEGORIES.map((_, i) => (
+                    <button
+                        key={i}
+                        onClick={() => setStartIndex(i)}
+                        aria-label={`Go to slide ${i + 1}`}
+                        className={`h-2 rounded-full border-none cursor-pointer transition-all duration-300 ${i === startIndex
+                            ? "w-6 bg-[#FF6B00]"
+                            : "w-2 bg-white/25"
+                            }`}
+                    />
+                ))}
                 </div>
             </div>
         </section>
@@ -131,8 +186,27 @@ function ArrowButton({ direction, onClick }: { direction: "left" | "right"; onCl
         <button
             onClick={onClick}
             aria-label={direction === "left" ? "Previous" : "Next"}
-            className="w-12 h-12 rounded-lg border border-white/25 bg-white/5 text-white flex items-center justify-center cursor-pointer transition-all duration-250 hover:border-[#FF6B00] hover:bg-[rgba(255,107,0,0.12)] hover:text-[#FF6B00]"
-        >
+            className="
+    w-10
+    h-10
+    sm:w-12
+    sm:h-12
+    rounded-xl
+    border
+    border-white/25
+    bg-white/5
+    text-white
+    flex
+    items-center
+    justify-center
+    cursor-pointer
+    transition-all
+    duration-300
+    hover:border-[#FF6B00]
+    hover:bg-[rgba(255,107,0,0.12)]
+    hover:text-[#FF6B00]
+    hover:scale-105
+"        >
             {direction === "left" ? (
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="15 18 9 12 15 6" />
@@ -148,8 +222,23 @@ function ArrowButton({ direction, onClick }: { direction: "left" | "right"; onCl
 
 function CategoryCard({ category }: { category: Category }) {
     return (
-        <div className="group bg-[rgba(30,10,3,0.90)] border border-white/[0.07] rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(255,107,0,0.35)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.5)] cursor-pointer">
-            {/* IMAGE */}
+        <div
+            className="
+        group
+        bg-[rgba(30,10,3,0.90)]
+        border
+        border-white/[0.07]
+        rounded-2xl
+        overflow-hidden
+        transition-all
+        duration-300
+        hover:-translate-y-1
+        hover:border-[rgba(255,107,0,0.35)]
+        hover:shadow-[0_16px_40px_rgba(0,0,0,0.5)]
+        cursor-pointer
+        h-full
+    "
+        >            {/* IMAGE */}
             <div className="relative w-full aspect-[1/1.05] overflow-hidden">
                 <Image
                     src={category.image}
@@ -160,12 +249,30 @@ function CategoryCard({ category }: { category: Category }) {
             </div>
 
             {/* TEXT */}
-            <div className="p-5 pb-6">
-                <h3 className="text-[15px] font-extrabold text-white uppercase tracking-[1.5px] mb-2">
-                    {category.name}
+            <div className="p-4 sm:p-5 pb-5 sm:pb-6">
+                <h3
+                    className="
+        text-[14px]
+        sm:text-[15px]
+        font-extrabold
+        text-white
+        uppercase
+        tracking-[1px]
+        sm:tracking-[1.5px]
+        mb-2
+        leading-snug
+    "
+                >                {category.name}
                 </h3>
-                <p className="text-[13px] text-white/55 leading-relaxed mb-3.5">
-                    {category.description}
+                <p
+                    className="
+        text-[13px]
+        sm:text-[14px]
+        text-white/55
+        leading-relaxed
+        mb-4
+    "
+                >                    {category.description}
                 </p>
                 <Link
                     href={category.href}

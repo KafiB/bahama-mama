@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useId, useState } from "react";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { StoreLocation } from "../lib/demo-store-locations";
 
 // ─── Fix Leaflet default icon paths broken by webpack ────────────────────────
-delete (L.Icon.Default.prototype as unknown as Record<string, unknown>)._getIconUrl;L.Icon.Default.mergeOptions({
+delete (L.Icon.Default.prototype as unknown as Record<string, unknown>)._getIconUrl; L.Icon.Default.mergeOptions({
     iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
     iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
     shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
@@ -70,7 +70,7 @@ function CustomZoom() {
                         height: "32px",
                         background: "#1a0a00",
                         border: "1px solid rgba(255,255,255,0.2)",
-                        borderRadius: "6px",
+                        borderRadius: "0",
                         color: "#ffffff",
                         fontSize: "18px",
                         fontWeight: "bold",
@@ -109,16 +109,33 @@ interface MapInnerProps {
 // ─── Main Map Component ───────────────────────────────────────────────────────
 
 export default function MapInner({ stores, activeStoreId, onMarkerClick }: MapInnerProps) {
+    const [mounted, setMounted] = useState(false);
+    const mapKey = useId();
     const activeStore = stores.find((s) => s.id === activeStoreId);
     const center: [number, number] = [29.7604, -95.3698];
 
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) {
+        return (
+            <div
+                className="w-full h-full min-h-[320px] bg-[#1e0800]"
+                aria-hidden
+            />
+        );
+    }
+
     return (
         <MapContainer
+            key={mapKey}
             center={center}
             zoom={11}
             style={{
                 width: "100%",
                 height: "100%",
+                minHeight: "320px",
                 zIndex: 0,
             }}
             className="!z-0"

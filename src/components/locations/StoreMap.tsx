@@ -58,7 +58,7 @@ function FilterBtn({
     return (
         <button
             onClick={onClick}
-            className={`flex items-center gap-1.5 px-4 py-2 rounded-none text-[12px] font-semibold transition-all duration-200 border cursor-pointer ${active
+            className={`flex items-center gap-1.5 px-4 py-2 text-[12px] font-semibold transition-all duration-200 border cursor-pointer whitespace-nowrap flex-shrink-0 ${active
                 ? "bg-[#FF6B00] border-[#FF6B00] text-white"
                 : "bg-white/5 border-white/15 text-white/70 hover:border-white/30 hover:text-white"
                 }`}
@@ -83,7 +83,7 @@ function StoreCard({
     return (
         <div
             onClick={onClick}
-            className={`rounded-xl p-5 cursor-pointer transition-all duration-200 border ${active
+            className={`p-5 cursor-pointer transition-all duration-200 border ${active
                 ? "border-[#FF6B00]/50 bg-[#2a1200]/80"
                 : "border-white/10 bg-[#1e0900]/70 hover:border-[#FF6B00]/30 hover:bg-[#2a1200]/50"
                 }`}
@@ -92,11 +92,11 @@ function StoreCard({
             {/* Top row: badge + distance */}
             <div className="flex items-center justify-between mb-2">
                 {store.isOpen ? (
-                    <span className="text-[10px] font-bold uppercase tracking-[1.5px] text-[#22c55e] bg-[#22c55e]/10 px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] font-bold uppercase tracking-[1.5px] text-[#22c55e] bg-[#22c55e]/10 px-2 py-0.5">
                         Open Now
                     </span>
                 ) : (
-                    <span className="text-[10px] font-bold uppercase tracking-[1.5px] text-white/40 bg-white/5 px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] font-bold uppercase tracking-[1.5px] text-white/40 bg-white/5 px-2 py-0.5">
                         Closed
                     </span>
                 )}
@@ -157,7 +157,6 @@ function StoreCard({
                             uppercase
                             tracking-[1.2px]
                             py-3
-                            rounded-lg
                             transition-all
                             duration-200
                             flex
@@ -196,7 +195,6 @@ function StoreCard({
                     uppercase
                     tracking-[1.2px]
                     py-3
-                    rounded-lg
                     transition-all
                     duration-200
                     flex
@@ -256,11 +254,12 @@ export default function StoreLocatorSection({
     const activeStore = filteredStores.find((s) => s.id === activeStoreId) ?? filteredStores[0];
 
     return (
-        <section className="w-full py-14 bg-gradient-to-br from-[#191317] to-[#5D231F]">
+        <section className="w-full py-14 bg-gradient-to-br from-[#1a0800] to-[#1f0d03]">
+        
             <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
 
                 {/* Filter Tabs */}
-                <div className="flex items-center gap-2 flex-wrap mb-5">
+                <div className="flex items-center gap-2 mb-5 overflow-x-auto pb-1 scrollbar-none">
                     {FILTERS.map((f) => (
                         <FilterBtn
                             key={f}
@@ -285,7 +284,7 @@ export default function StoreLocatorSection({
                 <div className="flex flex-col lg:flex-row gap-4 items-stretch">
 
                     {/* LEFT: Map */}
-                    <div className="relative flex-1 min-h-[420px] lg:min-h-[560px] rounded-xl overflow-hidden border border-white/10 z-0">
+                    <div className="relative w-full h-[320px] sm:h-[420px] lg:h-[560px] overflow-hidden border border-white/10">
                         <MapSection
                             stores={filteredStores}
                             activeStoreId={activeStore?.id ?? 0}
@@ -294,19 +293,8 @@ export default function StoreLocatorSection({
                     </div>
 
                     {/* RIGHT: Store List */}
-                    {/* RIGHT: Store List */}
-                    <div className="
-                                w-full
-                                lg:w-[400px]
-                                flex
-                                flex-col
-                                gap-3
-                                overflow-y-auto
-                                pr-2
-                                custom-scrollbar
-                            "
-                        style={{ maxHeight: "560px" }}
-                    >
+                    <div className="store-list-scrollbar w-full lg:w-[400px] flex flex-col gap-3 overflow-y-auto pr-1 lg:max-h-[560px]">
+
                         {filteredStores.length === 0 ? (
                             <div className="flex items-center justify-center h-40 text-white/40 text-sm">
                                 No stores match this filter.
@@ -325,12 +313,6 @@ export default function StoreLocatorSection({
                 </div>
             </div>
 
-            <style>{`
-        .store-list::-webkit-scrollbar { width: 4px; }
-        .store-list::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 9999px; }
-        .store-list::-webkit-scrollbar-thumb { background: rgba(255,107,0,0.4); border-radius: 9999px; }
-        .store-list::-webkit-scrollbar-thumb:hover { background: rgba(255,107,0,0.7); }
-      `}</style>
         </section>
     );
 }

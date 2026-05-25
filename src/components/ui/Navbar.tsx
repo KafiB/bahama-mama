@@ -6,166 +6,163 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
-    { label: "Home", href: "/home" },
-    { label: "About Us", href: "/about" },
-    { label: "Products", href: "/products" },
+    { label: "Home",      href: "/home" },
+    { label: "About Us",  href: "/about" },
+    { label: "Products",  href: "/products" },
     { label: "Locations", href: "/locations" },
-    { label: "Careers", href: "/careers" },
-    { label: "News", href: "/news" },
-    { label: "Contact", href: "/contact" },
+    { label: "Careers",   href: "/careers" },
+    { label: "News",      href: "/news" },
+    { label: "Contact",   href: "/contact" },
 ];
 
 export default function Navbar() {
     const pathname = usePathname();
-
     const [mobileOpen, setMobileOpen] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth < 1024);
-        handleResize();
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
+        const handleScroll = () => setIsScrolled(window.scrollY > 20);
+        handleScroll();
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    useEffect(() => {
-    const timer = setTimeout(() => setMobileOpen(false), 0);
-    return () => clearTimeout(timer);
-}, [pathname]);
+    useEffect(() => { setMobileOpen(false); }, [pathname]);
 
     return (
         <>
-            <div className="fixed top-[18px] left-1/2 w-full z-50 -translate-x-1/2 pointer-events-none transition-all duration-500 ease-in-out">
-                <nav
-                    className="mx-auto flex items-center justify-between rounded-full bg-gradient-to-br from-[#1C1417]/92 to-[#5A221E]/92 border-[1.5px] border-white/20 backdrop-blur-[16px] pointer-events-auto transition-all duration-500 ease max-w-[1280px] py-[18px] px-[42px]"
-                >
-                    {/* LOGO */}
-                    <Link href="/home" className="shrink-0 flex items-center">
-                        <Image
-                            src="/navbar/logo.svg"
-                            alt="Bahama Mama"
-                            width={190}
-                            height={52}
-                            priority
-                            className="w-auto h-[52px]"
-                        />
-                    </Link>
+            <header className="fixed top-0 left-0 w-full z-50 px-3 sm:px-5 xl:px-8 pt-3 sm:pt-5">
+                <nav className={`
+                    mx-auto max-w-[1400px]
+                    rounded-[22px] xl:rounded-full
+                    border border-white/10
+                    bg-gradient-to-br from-[#1C1417]/90 to-[#5A221E]/90
+                    backdrop-blur-2xl transition-all duration-300
+                    ${isScrolled ? "shadow-[0_10px_40px_rgba(0,0,0,0.35)]" : "shadow-[0_4px_20px_rgba(0,0,0,0.18)]"}
+                `}>
+                    <div className="flex items-center justify-between px-4 sm:px-6 xl:px-10 py-3 xl:py-4">
 
-                    {/* DESKTOP NAV */}
-                    {!isMobile && (
-                        <div className="flex flex-1 items-center justify-center gap-[18px] mx-[50px]">
-                            {NAV_ITEMS.map((item) => {
-                                const isActive =
-                                    pathname === item.href ||
-                                    pathname.startsWith(item.href + "/");
+                        {/* LOGO */}
+                        <Link href="/home" className="flex items-center shrink-0 z-50">
+                            <Image
+                                src="/navbar/logo.svg"
+                                alt="Bahama Mama"
+                                width={90} height={52} priority
+                                className="h-[36px] w-auto sm:h-[40px] xl:h-[48px]"
+                            />
+                        </Link>
 
-                                return (
-                                    <Link
-                                        key={item.label}
-                                        href={item.href}
-                                        className={`font-sans font-medium whitespace-nowrap py-[6px] px-[8px] transition-all duration-300 ease border-b-2 text-[16px] ${
-                                            isActive
-                                                ? "text-[#FF6B00] border-[#FF6B00]"
-                                                : "text-white border-transparent hover:text-[#FF6B00]"
-                                        }`}
-                                    >
-                                        {item.label}
-                                    </Link>
-                                );
-                            })}
+                        {/* ── TABLET (1024–1279px): compact inline links ── */}
+                        <div className="hidden lg:flex xl:hidden flex-1 items-center justify-center px-3">
+                            <div className="flex items-center gap-3">
+                                {NAV_ITEMS.map((item) => {
+                                    const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
+                                    return (
+                                        <Link key={item.label} href={item.href}
+                                            className={`relative text-[12px] font-medium whitespace-nowrap transition-all duration-300 pb-1 ${isActive ? "text-[#FF6B00]" : "text-white hover:text-[#FF6B00]"}`}
+                                        >
+                                            {item.label}
+                                            <span className={`absolute left-0 bottom-0 h-[2px] rounded-full bg-[#FF6B00] transition-all duration-300 ${isActive ? "w-full" : "w-0"}`} />
+                                        </Link>
+                                    );
+                                })}
+                            </div>
                         </div>
-                    )}
 
-                    {/* RIGHT SIDE */}
-                    <div className="flex items-center gap-4">
-                        {/* SEARCH */}
-                        {!isMobile && (
-                            <button
-                                aria-label="Search"
-                                className="flex items-center p-[10px] bg-transparent border-none cursor-pointer text-white/80 transition-colors duration-300 hover:text-white"
+                        {/* ── DESKTOP (1280px+): full-size links ── */}
+                        <div className="hidden xl:flex flex-1 items-center justify-center px-6">
+                            <div className="flex items-center gap-5 2xl:gap-7">
+                                {NAV_ITEMS.map((item) => {
+                                    const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
+                                    return (
+                                        <Link key={item.label} href={item.href}
+                                            className={`relative text-[14px] 2xl:text-[15px] font-medium whitespace-nowrap transition-all duration-300 pb-1 ${isActive ? "text-[#FF6B00]" : "text-white hover:text-[#FF6B00]"}`}
+                                        >
+                                            {item.label}
+                                            <span className={`absolute left-0 bottom-0 h-[2px] rounded-full bg-[#FF6B00] transition-all duration-300 ${isActive ? "w-full" : "w-0"}`} />
+                                        </Link>
+                                    );
+                                })}
+                            </div>
+                        </div>
+
+                        {/* ── TABLET RIGHT: compact search + CTA ── */}
+                        <div className="hidden lg:flex xl:hidden items-center gap-2 shrink-0">
+                            <button aria-label="Search"
+                                className="flex items-center justify-center w-9 h-9 rounded-full bg-white/5 text-white/80 border border-white/10 hover:bg-white/10 hover:text-white transition-all duration-300"
                             >
-                                <svg
-                                    width="22"
-                                    height="22"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                >
-                                    <circle cx="11" cy="11" r="8" />
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
                                 </svg>
                             </button>
-                        )}
-
-                        {/* CTA BUTTON */}
-                        {!isMobile && (
-                            <Link
-                                href="/locations"
-                                className="font-sans font-semibold text-white bg-[#FF6B00] rounded-full whitespace-nowrap transition-all duration-300 ease shadow-[0_6px_20px_rgba(255,107,0,0.35)] hover:bg-[#e85f00] hover:shadow-[0_8px_25px_rgba(255,107,0,0.45)] text-[15px] py-[14px] px-[28px]"
+                            <Link href="/locations"
+                                className="rounded-full bg-[#FF6B00] px-4 py-2 text-[12px] font-semibold text-white whitespace-nowrap hover:bg-[#e85f00] transition-all duration-300"
                             >
                                 Find a Location
                             </Link>
-                        )}
+                        </div>
 
-                        {/* MOBILE MENU BUTTON */}
-                        {isMobile && (
-                            <button
-                                onClick={() => setMobileOpen(!mobileOpen)}
-                                aria-label="Toggle Menu"
-                                className="flex flex-col gap-[5px] p-2 bg-transparent border-none cursor-pointer text-white"
+                        {/* ── DESKTOP RIGHT: full search + CTA ── */}
+                        <div className="hidden xl:flex items-center gap-3 shrink-0">
+                            <button aria-label="Search"
+                                className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 text-white/80 border border-white/10 hover:bg-white/10 hover:text-white transition-all duration-300"
                             >
-                                <span
-                                    className={`block w-[24px] h-[2px] bg-white transition-transform duration-300 ${
-                                        mobileOpen ? "rotate-45 translate-x-[5px] translate-y-[5px]" : ""
-                                    }`}
-                                />
-                                <span
-                                    className={`block w-[24px] h-[2px] bg-white transition-opacity duration-300 ${
-                                        mobileOpen ? "opacity-0" : "opacity-100"
-                                    }`}
-                                />
-                                <span
-                                    className={`block w-[24px] h-[2px] bg-white transition-transform duration-300 ${
-                                        mobileOpen ? "-rotate-45 translate-x-[5px] -translate-y-[5px]" : ""
-                                    }`}
-                                />
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                </svg>
                             </button>
-                        )}
+                            <Link href="/locations"
+                                className="rounded-full bg-[#FF6B00] px-6 2xl:px-7 py-2.5 2xl:py-3 text-[13px] 2xl:text-[14px] font-semibold text-white whitespace-nowrap transition-all duration-300 shadow-[0_8px_25px_rgba(255,107,0,0.35)] hover:bg-[#e85f00] hover:scale-[1.02]"
+                            >
+                                Find a Location
+                            </Link>
+                        </div>
+
+                        {/* ── MOBILE HAMBURGER (below 1024px) ── */}
+                        <button
+                            onClick={() => setMobileOpen(!mobileOpen)}
+                            aria-label="Toggle Menu"
+                            className="lg:hidden relative z-50 flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl"
+                        >
+                            <div className="relative w-5 h-5">
+                                <span className={`absolute left-0 top-[4px] h-[2px] w-5 rounded-full bg-white transition-all duration-300 ${mobileOpen ? "rotate-45 top-[9px]" : ""}`} />
+                                <span className={`absolute left-0 top-[9px] h-[2px] w-5 rounded-full bg-white transition-all duration-300 ${mobileOpen ? "opacity-0" : "opacity-100"}`} />
+                                <span className={`absolute left-0 top-[14px] h-[2px] w-5 rounded-full bg-white transition-all duration-300 ${mobileOpen ? "-rotate-45 top-[9px]" : ""}`} />
+                            </div>
+                        </button>
                     </div>
-                </nav>
 
-                {/* MOBILE MENU */}
-                {isMobile && (
-                    <div
-                        className={`mt-[10px] overflow-hidden transition-all duration-300 ease pointer-events-auto ${
-                            mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-                        }`}
-                    >
-                        <div className="bg-black/45 backdrop-blur-[16px] rounded-[24px] p-4 mx-4 shadow-xl border border-white/10">
-                            {NAV_ITEMS.map((item) => {
-                                const isActive = pathname === item.href;
-
-                                return (
-                                    <Link
-                                        key={item.label}
-                                        href={item.href}
-                                        className={`block font-sans text-[16px] font-medium py-[14px] px-[18px] rounded-[12px] transition-colors ${
-                                            isActive
-                                                ? "text-[#FF6B00] bg-[#FF6B00]/10"
-                                                : "text-white bg-transparent hover:bg-white/5"
-                                        }`}
+                    {/* ── MOBILE DROPDOWN MENU ── */}
+                    <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${mobileOpen ? "max-h-[700px] opacity-100" : "max-h-0 opacity-0"}`}>
+                        <div className="px-4 pb-5 pt-1">
+                            <div className="rounded-[22px] border border-white/10 bg-black/25 backdrop-blur-2xl p-3 shadow-2xl">
+                                <div className="flex flex-col gap-1">
+                                    {NAV_ITEMS.map((item) => {
+                                        const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
+                                        return (
+                                            <Link key={item.label} href={item.href}
+                                                className={`flex items-center justify-between rounded-2xl px-4 py-4 text-[15px] font-medium transition-all duration-300 ${isActive ? "bg-[#FF6B00]/15 text-[#FF6B00]" : "text-white hover:bg-white/5"}`}
+                                            >
+                                                {item.label}
+                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-70">
+                                                    <path d="M9 18l6-6-6-6" />
+                                                </svg>
+                                            </Link>
+                                        );
+                                    })}
+                                </div>
+                                <div className="pt-4">
+                                    <Link href="/locations"
+                                        className="flex items-center justify-center w-full rounded-2xl bg-[#FF6B00] py-4 text-[15px] font-semibold text-white transition-all duration-300 hover:bg-[#e85f00]"
                                     >
-                                        {item.label}
+                                        Find a Location
                                     </Link>
-                                );
-                            })}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                )}
-            </div>
+                </nav>
+            </header>
         </>
     );
 }
