@@ -6,13 +6,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
-    { label: "Home",      href: "/home" },
-    { label: "About Us",  href: "/about" },
-    { label: "Products",  href: "/products" },
+    { label: "Home", href: "/home" },
+    { label: "About Us", href: "/about" },
+    { label: "Products", href: "/products" },
     { label: "Locations", href: "/locations" },
-    { label: "Careers",   href: "/careers" },
-    { label: "News",      href: "/news" },
-    { label: "Contact",   href: "/contact" },
+    { label: "Careers", href: "/careers" },
+    { label: "News", href: "/news" },
+    { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -27,7 +27,10 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    useEffect(() => { setMobileOpen(false); }, [pathname]);
+    useEffect(() => {
+        const timer = setTimeout(() => setMobileOpen(false), 0);
+        return () => clearTimeout(timer);
+    }, [pathname]);
 
     return (
         <>

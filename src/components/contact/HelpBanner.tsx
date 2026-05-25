@@ -46,7 +46,7 @@ export default function ExploreCollectionBanner() {
                         max-w-[1000px]
                     "
                 >
-                    WE'RE HERE TO HELP 
+                    WE&apos;RE HERE TO HELP 
                 </h2>
 
                 {/* Subtitle */}

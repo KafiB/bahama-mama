@@ -26,10 +26,6 @@ const DEMO_JOBS: JobPosition[] = [
   { id: 8, title: "E-Commerce Specialist", location: "Remote",          type: "Full Time",  department: "Marketing",   applyUrl: "#" },
 ];
 
-// ─── Derived filter options ───────────────────────────────────────────────────
-
-const ALL_LOCATIONS  = ["All Locations",  ...Array.from(new Set(DEMO_JOBS.map((j) => j.location)))];
-const ALL_DEPARTMENTS = ["All Departments", ...Array.from(new Set(DEMO_JOBS.map((j) => j.department)))];
 
 // ─── Job Row ──────────────────────────────────────────────────────────────────
 

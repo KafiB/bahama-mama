@@ -40,7 +40,7 @@ const VALUES_DATA: ValueCard[] = [
         iconSrc: "/about/values/globe.png",
         title: "Community Hub",
         description:
-            "We don't just sell products; we build safe, welcoming spaces for the communities we serve across Texas.",
+            "We don&apos;t just sell products; we build safe, welcoming spaces for the communities we serve across Texas.",
     },
 ];
 

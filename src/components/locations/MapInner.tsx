@@ -115,7 +115,8 @@ export default function MapInner({ stores, activeStoreId, onMarkerClick }: MapIn
     const center: [number, number] = [29.7604, -95.3698];
 
     useEffect(() => {
-        setMounted(true);
+        const timer = setTimeout(() => setMounted(true), 0);
+        return () => clearTimeout(timer);
     }, []);
 
     if (!mounted) {

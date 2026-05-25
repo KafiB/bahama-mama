@@ -20,18 +20,18 @@ export interface NewsArticle {
 // ─── Demo Data ────────────────────────────────────────────────────────────────
 
 const DEMO_ARTICLES: NewsArticle[] = [
-    { id: 1,  image: "/news/latest/news1,4.png", category: "Product Updates",  title: "The Zen Blend Collection: Now Available Nationwide",        excerpt: "Our most requested wellness blend has officially launched in all stores and online, featuring pure...",               date: "Oct 24, 2023", href: "/news/zen-blend" },
-    { id: 2,  image: "/news/latest/new2.png",    category: "Company News",     title: "Sustainability: Our 2024 Green Initiative Roadmap",           excerpt: "Learn how Bahama Mama is transitioning to 100% biodegradable packaging across all product lines...",                 date: "Oct 20, 2023", href: "/news/green-initiative" },
-    { id: 3,  image: "/news/latest/news3.png",   category: "Press Releases",   title: "Partnership With Local Texas Organic Hemp Farmers",           excerpt: "We've secured long-term contracts with regional farmers to ensure the highest quality seed-to-shelf...",              date: "Oct 15, 2023", href: "/news/hemp-partnership" },
-    { id: 4,  image: "/news/latest/news1,4.png", category: "Product Updates",  title: "The Zen Blend Collection: Now Available Nationwide",          excerpt: "Our most requested wellness blend has officially launched in all stores and online, featuring pure...",               date: "Oct 24, 2023", href: "/news/zen-blend-2" },
-    { id: 5,  image: "/news/latest/n1.jpg",      category: "Store Openings",   title: "Bahama Mama Opens 5 New Locations in Texas",                  excerpt: "Expanding our footprint in the Lone Star State, bringing the premium experience to Austin, Dallas...",               date: "Oct 12, 2023", href: "/news/new-locations" },
-    { id: 6,  image: "/news/latest/n2.png",      category: "Company News",     title: "New Chief Marketing Officer Joins Bahama Mama Leadership",    excerpt: "We are thrilled to welcome a seasoned marketing executive with over 20 years of retail experience...",              date: "Sep 28, 2023", href: "/news/new-cmo" },
-    { id: 7,  image: "/news/latest/n3.jpg",      category: "Product Updates",  title: "Introducing Our New Line of Premium Vape Devices",            excerpt: "Engineered for superior performance, our latest vape hardware lineup sets a new standard for the...",               date: "Sep 20, 2023", href: "/news/vape-devices" },
-    { id: 8,  image: "/news/latest/n4.avif",     category: "Press Releases",   title: "Bahama Mama Announces Q3 Record Revenue Growth",              excerpt: "Strong consumer demand across all product categories drove record third-quarter revenue, reflecting...",             date: "Sep 15, 2023", href: "/news/q3-earnings" },
-    { id: 9,  image: "/news/latest/new2.png",    category: "Store Openings",   title: "Grand Opening: Houston Galleria Premium Concept Store",       excerpt: "Our largest flagship yet opens its doors with an immersive retail experience unlike anything in...",                date: "Sep 10, 2023", href: "/news/houston-galleria" },
-    { id: 10, image: "/news/latest/news3.png",   category: "Company News",     title: "Bahama Mama Partners With National CBD Association",          excerpt: "A landmark partnership that strengthens industry standards and promotes responsible retail practices...",             date: "Sep 05, 2023", href: "/news/cbd-association" },
-    { id: 11, image: "/news/latest/n1.jpg",      category: "Product Updates",  title: "Premium CBD Tinctures: New Flavors Now In Stock",             excerpt: "Customers can now enjoy four exciting new flavors in our best-selling full-spectrum CBD tincture...",               date: "Aug 28, 2023", href: "/news/tinctures" },
-    { id: 12, image: "/news/latest/n3.jpg",      category: "Press Releases",   title: "Bahama Mama Recognized as Top Employer in Texas Retail",      excerpt: "For the second consecutive year, we have been honored with the Texas Retail Employer of the Year...",              date: "Aug 20, 2023", href: "/news/employer-award" },
+    { id: 1, image: "/news/latest/news1,4.png", category: "Product Updates", title: "The Zen Blend Collection: Now Available Nationwide", excerpt: "Our most requested wellness blend has officially launched in all stores and online, featuring pure...", date: "Oct 24, 2023", href: "/news/zen-blend" },
+    { id: 2, image: "/news/latest/new2.png", category: "Company News", title: "Sustainability: Our 2024 Green Initiative Roadmap", excerpt: "Learn how Bahama Mama is transitioning to 100% biodegradable packaging across all product lines...", date: "Oct 20, 2023", href: "/news/green-initiative" },
+    { id: 3, image: "/news/latest/news3.png", category: "Press Releases", title: "Partnership With Local Texas Organic Hemp Farmers", excerpt: "We've secured long-term contracts with regional farmers to ensure the highest quality seed-to-shelf...", date: "Oct 15, 2023", href: "/news/hemp-partnership" },
+    { id: 4, image: "/news/latest/news1,4.png", category: "Product Updates", title: "The Zen Blend Collection: Now Available Nationwide", excerpt: "Our most requested wellness blend has officially launched in all stores and online, featuring pure...", date: "Oct 24, 2023", href: "/news/zen-blend-2" },
+    { id: 5, image: "/news/latest/n1.jpg", category: "Store Openings", title: "Bahama Mama Opens 5 New Locations in Texas", excerpt: "Expanding our footprint in the Lone Star State, bringing the premium experience to Austin, Dallas...", date: "Oct 12, 2023", href: "/news/new-locations" },
+    { id: 6, image: "/news/latest/n2.png", category: "Company News", title: "New Chief Marketing Officer Joins Bahama Mama Leadership", excerpt: "We are thrilled to welcome a seasoned marketing executive with over 20 years of retail experience...", date: "Sep 28, 2023", href: "/news/new-cmo" },
+    { id: 7, image: "/news/latest/n3.jpg", category: "Product Updates", title: "Introducing Our New Line of Premium Vape Devices", excerpt: "Engineered for superior performance, our latest vape hardware lineup sets a new standard for the...", date: "Sep 20, 2023", href: "/news/vape-devices" },
+    { id: 8, image: "/news/latest/n4.avif", category: "Press Releases", title: "Bahama Mama Announces Q3 Record Revenue Growth", excerpt: "Strong consumer demand across all product categories drove record third-quarter revenue, reflecting...", date: "Sep 15, 2023", href: "/news/q3-earnings" },
+    { id: 9, image: "/news/latest/new2.png", category: "Store Openings", title: "Grand Opening: Houston Galleria Premium Concept Store", excerpt: "Our largest flagship yet opens its doors with an immersive retail experience unlike anything in...", date: "Sep 10, 2023", href: "/news/houston-galleria" },
+    { id: 10, image: "/news/latest/news3.png", category: "Company News", title: "Bahama Mama Partners With National CBD Association", excerpt: "A landmark partnership that strengthens industry standards and promotes responsible retail practices...", date: "Sep 05, 2023", href: "/news/cbd-association" },
+    { id: 11, image: "/news/latest/n1.jpg", category: "Product Updates", title: "Premium CBD Tinctures: New Flavors Now In Stock", excerpt: "Customers can now enjoy four exciting new flavors in our best-selling full-spectrum CBD tincture...", date: "Aug 28, 2023", href: "/news/tinctures" },
+    { id: 12, image: "/news/latest/n3.jpg", category: "Press Releases", title: "Bahama Mama Recognized as Top Employer in Texas Retail", excerpt: "For the second consecutive year, we have been honored with the Texas Retail Employer of the Year...", date: "Aug 20, 2023", href: "/news/employer-award" },
 ];
 
 const INITIAL_COUNT = 4;
@@ -110,10 +110,9 @@ export default function LatestUpdatesSection({
     }, [articles, activeCategory, searchQuery]);
 
     // Reset visible count when filter/search changes
-    const prevFiltered = useMemo(() => filtered, [filtered]);
     useMemo(() => {
         setVisibleCount(INITIAL_COUNT);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeCategory, searchQuery]);
 
     const visible = filtered.slice(0, visibleCount);
@@ -128,7 +127,7 @@ export default function LatestUpdatesSection({
     };
 
     return (
-        <section className="w-full py-12 md:py-16 bg-gradient-to-br from-[#120400] via-[#1a0800] to-[#3a1200]">
+        <section id="latest-updates" className="w-full py-12 md:py-16 bg-gradient-to-br from-[#120400] via-[#1a0800] to-[#3a1200]">
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-14">
 
                 {/* Header row */}
@@ -190,11 +189,26 @@ export default function LatestUpdatesSection({
                     </div>
                 )}
 
-                {/* All loaded */}
+                {/* All loaded + View Less */}
                 {!hasMore && filtered.length > 0 && visibleCount > INITIAL_COUNT && (
-                    <p className="text-center text-white/25 text-[12px] mt-10 uppercase tracking-[2px]">
-                        All articles loaded
-                    </p>
+                    <div className="flex flex-col items-center gap-3 mt-10">
+                        <p className="text-white/25 text-[12px] uppercase tracking-[2px] m-0">
+                            All articles loaded
+                        </p>
+                        <button
+                            onClick={() => {
+                                setVisibleCount(INITIAL_COUNT);
+                                // Smooth scroll back to section top
+                                document.querySelector("#latest-updates")?.scrollIntoView({ behavior: "smooth" });
+                            }}
+                            className="flex items-center gap-2.5 bg-transparent border border-white/20 text-white/50 text-[12px] font-black uppercase tracking-[2px] px-8 py-4 rounded-xl hover:border-[#FF6B00]/50 hover:text-[#FF6B00] hover:bg-[#FF6B00]/10 transition-all duration-200 cursor-pointer"
+                        >
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                <polyline points="18 15 12 9 6 15" />
+                            </svg>
+                            View Less
+                        </button>
+                    </div>
                 )}
 
             </div>
