@@ -72,8 +72,8 @@ function FlagshipCard({
     return (
         <div
             className={`group relative flex flex-col rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ${featured
-                    ? "scale-[1.04] shadow-[0_24px_60px_rgba(0,0,0,0.7)] z-10"
-                    : "scale-100 shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:scale-[1.02]"
+                ? "scale-[1.04] shadow-[0_24px_60px_rgba(0,0,0,0.7)] z-10"
+                : "scale-100 shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:scale-[1.02]"
                 }`}
         >
             {/* Image */}
@@ -89,22 +89,22 @@ function FlagshipCard({
 
                 {/* Badge */}
                 <div className="absolute top-4 left-4">
-                    <span className="bg-[#FFBE32] text-white text-[10px] font-black uppercase tracking-[1.5px] px-3 py-1.5 rounded-sm">
+                    <span className="bg-[#FF6A00] text-white text-[10px] font-black uppercase tracking-[1.5px] px-3 py-1.5 rounded-sm">
                         {location.badge}
                     </span>
                 </div>
 
                 {/* Bottom content */}
-                <div className="absolute bottom-0 left-0 right-0 p-5 pb-7 flex flex-col gap-3">                   
-                     <h3 className="text-white text-[18px] font-black leading-tight m-0 tracking-tight">
-                    {location.name}
-                </h3>
+                <div className="absolute bottom-0 left-0 right-0 p-5 pb-7 flex flex-col gap-3">
+                    <h3 className="text-white text-[18px] font-black leading-tight m-0 tracking-tight">
+                        {location.name}
+                    </h3>
                     <p className="text-white/65 text-[12px] leading-[1.6] m-0 line-clamp-2">
                         {location.description}
                     </p>
                     <Link
                         href={location.href}
-                        className="inline-flex items-center gap-1.5 text-[#FFBE32] text-[11px] font-black uppercase tracking-[1.5px] no-underline mt-1 transition-gap duration-200 hover:gap-2.5 group/link"
+                        className="inline-flex items-center gap-1.5 text-[#FF6A00] text-[11px] font-black uppercase tracking-[1.5px] no-underline mt-1 transition-gap duration-200 hover:gap-2.5 group/link"
                         onClick={(e) => e.stopPropagation()}
                     >
                         Explore Location
@@ -278,7 +278,7 @@ export default function FlagshipExperiencesSection({
                                     resumeAuto();
                                 }}
                                 aria-label={`Go to location ${i + 1}`}
-                                className={`h-2 rounded-full border-none cursor-pointer transition-all duration-300 ${active ? "w-6 bg-[#FFBE32]" : "w-2 bg-white/25"
+                                className={`h-2 rounded-full border-none cursor-pointer transition-all duration-300 ${active ? "w-6 bg-[#FF6A00]" : "w-2 bg-white/25"
                                     }`}
                             />
                         );

@@ -13,13 +13,13 @@ export interface ServiceImage {
 // ─── Demo Data ────────────────────────────────────────────────────────────────
 
 const DEMO_IMAGES: ServiceImage[] = [
-    { id: 1, src: "/locations/store_details/service/i1.png", alt: "Store interior"  },
-    { id: 2, src: "/locations/store_details/service/i2.png", alt: "CBD products"    },
-    { id: 3, src: "/locations/store_details/service/i3.png", alt: "Lounge area"     },
-    { id: 4, src: "/locations/store_details/service/i4.png", alt: "Display shelf"   },
-    { id: 5, src: "/locations/store_details/service/i5.png", alt: "Store exterior"  },
-    { id: 6, src: "/locations/store_details/service/i6.png", alt: "Product lineup"  },
-    { id: 7, src: "/locations/store_details/service/i7.png", alt: "Store hallway"   },
+    { id: 1, src: "/locations/store_details/service/i1.png", alt: "Store interior" },
+    { id: 2, src: "/locations/store_details/service/i2.png", alt: "CBD products" },
+    { id: 3, src: "/locations/store_details/service/i3.png", alt: "Lounge area" },
+    { id: 4, src: "/locations/store_details/service/i4.png", alt: "Display shelf" },
+    { id: 5, src: "/locations/store_details/service/i5.png", alt: "Store exterior" },
+    { id: 6, src: "/locations/store_details/service/i6.png", alt: "Product lineup" },
+    { id: 7, src: "/locations/store_details/service/i7.png", alt: "Store hallway" },
 ];
 
 interface ServicesAvailableSectionProps {
@@ -51,13 +51,13 @@ export default function ServicesAvailableSection({
 
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-7">
-                    <div className="w-1 h-6 bg-[#FFBE32] rounded-full shrink-0" />
+                    <div className="w-1 h-6 bg-[#FF6A00] rounded-full shrink-0" />
                     <h2 className="text-white text-[15px] font-black uppercase tracking-[2.5px] m-0">
                         Services Available
                     </h2>
                 </div>
 
-        
+
                 {/* OUTER: left 2/3 + right 1/3 */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
 

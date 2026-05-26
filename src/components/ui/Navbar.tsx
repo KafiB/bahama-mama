@@ -39,7 +39,7 @@ export default function Navbar() {
                     mx-auto max-w-[1400px]
                     rounded-[22px] xl:rounded-full
                     border border-white/10
-                    bg-gradient-to-br from-[#1C1417]/90 to-[#5A221E]/90
+                    bg-gradient-to-br from-[#1a0800] to-[#1f0d03]
                     backdrop-blur-2xl transition-all duration-300
                     ${isScrolled ? "shadow-[0_10px_40px_rgba(0,0,0,0.35)]" : "shadow-[0_4px_20px_rgba(0,0,0,0.18)]"}
                 `}>
